@@ -1,13 +1,23 @@
 import { useState } from 'react'
 import './App.css'
 import PokemonList from './components/PokemonList'
+import PokemonDetails from './components/PokemonDetails';
 
 function App() {
 
+  const [selectedPokemon, setSelectedPokemon] = useState();
+
   return (
     <>
-      <h2>Pokemon Project</h2>
-      <PokemonList></PokemonList> 
+      {selectedPokemon && (
+        <div>
+          <h2>Pokemon Seleccionado</h2>
+          <PokemonDetails pokemon={selectedPokemon}></PokemonDetails>
+        </div>
+      )}
+
+      <h2>Lista de Pokemons</h2>
+      <PokemonList selectPokemon={setSelectedPokemon}></PokemonList> 
     </>
   )
 }
