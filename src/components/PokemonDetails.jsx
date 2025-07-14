@@ -33,4 +33,4 @@ function PokemonDetails(props) {
 }
 
 
-export default DetailsWrapper(PokemonDetails);
+export default PokemonDetails;

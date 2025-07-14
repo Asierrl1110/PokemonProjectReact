@@ -3,12 +3,33 @@ import './App.css'
 import PokemonList from './components/PokemonList'
 import PokemonDetails from './components/PokemonDetails';
 import PokemonDetails2 from './components/PokemonDetails2';
+import DetailsWrapper from './hoc/DetailsWrapper';
 
 function App() {
   // Estado para almacenar el Pokémon seleccionado desde la lista
   const [selectedPokemon, setSelectedPokemon] = useState();
-
+  // Estado para almacenar el Pokémon seleccionado 2 desde la lista
   const [selectedPokemon2, setSelectedPokemon2] = useState();
+
+  const getDetails1 = (likes, increaseLikes) => {
+    return (
+      <PokemonDetails 
+      pokemon={selectedPokemon}
+      likes={likes}
+      increaseLikes={increaseLikes}
+      ></PokemonDetails>
+    )
+  }
+
+  const getDetails2 = (likes, increaseLikes) => {
+    return (
+      <PokemonDetails2 
+      pokemon={selectedPokemon}
+      likes={likes}
+      increaseLikes={increaseLikes}
+      ></PokemonDetails2>
+    )
+  }
 
   return (
     <>
@@ -16,11 +37,11 @@ function App() {
       <h2>Pokemons Seleccionado</h2>
       {/* Componente que muestra los detalles del Pokémon seleccionado */}
       {selectedPokemon && (
-          <PokemonDetails pokemon={selectedPokemon}></PokemonDetails>
+          <DetailsWrapper render={getDetails1}></DetailsWrapper>
       )}
       {/* Componente que muestra los detalles del Pokémon seleccionado */}
       {selectedPokemon2 && (
-          <PokemonDetails2 pokemon={selectedPokemon2}></PokemonDetails2>
+          <DetailsWrapper render={getDetails2}></DetailsWrapper>
       )}
       <h2>Lista de Pokemons</h2>
 
