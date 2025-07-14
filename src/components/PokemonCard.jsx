@@ -3,11 +3,13 @@ import "./PokemonCard.css"
 function PokemonCard(props) {
 
     // Se extraen el objeto 'pokemon' y la función 'selectPokemon' de las props
-    const { pokemon, selectPokemon } = props;
+    const { pokemon, selectPokemon, selectPokemon2 } = props;
 
     return pokemon.id ? (
         // Si el Pokémon tiene un ID (es decir, los datos ya fueron cargados), se muestra la tarjeta
-        <li className="pokemon-card" onClick={() => selectPokemon(pokemon)}>
+        <li className="pokemon-card"
+            onClick={() => selectPokemon(pokemon)}
+            onAuxClick={() => selectPokemon2(pokemon)}>
             {/* Nombre del Pokémon */}
             <h2 className="pokemon-name">{pokemon.name}</h2>
 

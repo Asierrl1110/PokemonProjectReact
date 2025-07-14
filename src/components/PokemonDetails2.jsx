@@ -2,20 +2,20 @@ import { useState } from "react";
 import "./PokemonDetails.css";
 import DetailsWrapper from "../hoc/DetailsWrapper";
 
-function PokemonDetails(props) {
+function PokemonDetails2(props) {
     // Se extrae el objeto 'pokemon' de las props
     const { pokemon, likes, increaseLikes } = props;
 
     return (
         <section className="selected-pokemon">
             <div>
-                <h3>Pokémon 1</h3>
+                <h3>Pokémon 2</h3>
                 <h3>
                     Likes {likes}
                     <button onClick={increaseLikes}>+</button>
                 </h3>
             </div>
-            <div className="pokemon-container">
+            <div className="pokemon-container pokemon-2">
                 {/* Muestra el nombre del Pokémon */}
                 <h2 className="text">{pokemon.name}</h2>
 
@@ -33,4 +33,4 @@ function PokemonDetails(props) {
 }
 
 
-export default PokemonDetails;
+export default PokemonDetails2;

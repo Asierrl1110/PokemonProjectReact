@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import PokemonCard from "./PokemonCard"
 import "./PokemonList.css"
 import GetForm from "./GetForm";
+import { PokemonContext } from "../context/pokemon.context";
 
 function PokemonList(props) {
-  // Estado para almacenar la lista de Pokémons
-  const [pokemons, setPokemons] = useState([]);
+  // Usamos el estado del contexto de PokemonContext para almacenar la lista de Pokémons
+  const { pokemons, setPokemons } = useContext(PokemonContext);
 
   // useEffect se ejecuta al montar el componente por primera vez
   // Carga inicial de los primeros 10 Pokémons
@@ -39,7 +40,8 @@ function PokemonList(props) {
     return <PokemonCard
       key={pokemon.id}
       pokemon={pokemon}
-      selectPokemon={props.selectPokemon}>
+      selectPokemon={props.selectPokemon}
+      selectPokemon2={props.selectPokemon2}>
     </PokemonCard>;
   });
 
