@@ -4,29 +4,37 @@ import "./PokemonList.css"
 import GetForm from "./GetForm";
 
 function PokemonList(props) {
+  // Estado para almacenar la lista de Pokémons
   const [pokemons, setPokemons] = useState([]);
 
+  // useEffect se ejecuta al montar el componente por primera vez
+  // Carga inicial de los primeros 10 Pokémons
   useEffect(() => {
     getPokemons(1, 10);
   }, []);
 
+  // Función que obtiene los datos de un Pokémon a partir de su índice
   const fetchPokemon = async (index) => {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${index}`);
     const data = await response.json();
     return data;
   }
 
+  // Función que obtiene un rango de Pokémons y actualiza el estado
   const getPokemons = async (from, to) => {
     const pokemonArray = [];
 
+    // Recorre el rango indicado y agrega cada Pokémon a la lista
     for (let i = from; i <= to; i++) {
       const pokemon = await fetchPokemon(i);
       pokemonArray.push(pokemon);
     }
 
+    // Actualiza el estado con la lista obtenida
     setPokemons(pokemonArray);
   }
 
+  // Mapea la lista de Pokémons al componente PokemonCard
   const pokemonCards = pokemons.map((pokemon) => {
     return <PokemonCard
       key={pokemon.id}
@@ -37,12 +45,16 @@ function PokemonList(props) {
 
   return (
     <div>
+      {/* Formulario que permite modificar el rango de Pokémons a mostrar */}
       <GetForm getPokemons={getPokemons}></GetForm>
+
+      {/* Lista visual de las tarjetas de Pokémons */}
       <ul className="pokemon-list">
         {pokemonCards}
       </ul>
     </div>
   )
 }
+
 
 export default PokemonList
