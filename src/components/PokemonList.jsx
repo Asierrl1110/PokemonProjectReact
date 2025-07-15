@@ -6,20 +6,13 @@ import { PokemonContext } from "../context/pokemon.context";
 
 function PokemonList(props) {
   // Usamos el estado del contexto de PokemonContext para almacenar la lista de Pokémons
-  const { pokemons, setPokemons } = useContext(PokemonContext);
+  const { pokemons, setPokemons, fetchPokemon } = useContext(PokemonContext);
 
   // useEffect se ejecuta al montar el componente por primera vez
   // Carga inicial de los primeros 10 Pokémons
   useEffect(() => {
     getPokemons(1, 10);
   }, []);
-
-  // Función que obtiene los datos de un Pokémon a partir de su índice
-  const fetchPokemon = async (index) => {
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${index}`);
-    const data = await response.json();
-    return data;
-  }
 
   // Función que obtiene un rango de Pokémons y actualiza el estado
   const getPokemons = async (from, to) => {

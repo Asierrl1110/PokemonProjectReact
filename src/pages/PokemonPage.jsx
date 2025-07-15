@@ -1,21 +1,22 @@
 import "./PokemonPage.css"
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom"
+import { PokemonContext } from "../context/pokemon.context";
 
 function PokemonPage() {
     const { id } = useParams();
     const [pokemon, setPokemon] = useState();
     const [error, setError] = useState();
     const navigate = useNavigate();
+    const { fetchPokemon } = useContext(PokemonContext);
 
     useEffect(() => {
-        fetchPokemon(id);
+        getPokemon(id);
     }, [id]);
 
-    const fetchPokemon = async (id) => {
+    const getPokemon = async (id) => {
         try {
-            const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-            const data = await response.json();
+            const data = await fetchPokemon(id);
             setPokemon(data);
         } catch (e) {
             setError(e);
