@@ -1,10 +1,16 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import PokemonList from '../components/PokemonList'
 import PokemonDetails from '../components/PokemonDetails';
 import PokemonDetails2 from '../components/PokemonDetails2';
 import DetailsWrapper from '../hoc/DetailsWrapper';
+import { Navigate } from 'react-router-dom';
+import { UserContext } from '../context/user.context';
 
 function PokemonsPage() {
+    const {user} = useContext(UserContext);
+
+    if(!user.IsLoggedIn) return <Navigate to="/error"></Navigate>
+
     // Estado para almacenar el Pokémon seleccionado desde la lista
     const [selectedPokemon, setSelectedPokemon] = useState();
     // Estado para almacenar el Pokémon seleccionado 2 desde la lista
