@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./PokemonDetails.css";
 import DetailsWrapper from "../hoc/DetailsWrapper";
+import { Link } from "react-router-dom";
 
 function PokemonDetails(props) {
     // Se extrae el objeto 'pokemon' de las props
@@ -14,6 +15,7 @@ function PokemonDetails(props) {
                     Likes {likes}
                     <button onClick={increaseLikes}>+</button>
                 </h3>
+                <Link to={`/pokemons/${pokemon.id}`}>Ver detalles</Link>
             </div>
             <div className="pokemon-container">
                 {/* Muestra el nombre del Pokémon */}
