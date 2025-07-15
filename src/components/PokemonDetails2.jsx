@@ -14,6 +14,7 @@ function PokemonDetails2(props) {
                     Likes {likes}
                     <button onClick={increaseLikes}>+</button>
                 </h3>
+                <Link to={`/pokemons/${pokemon.id}`}>Ver detalles</Link>
             </div>
             <div className="pokemon-container pokemon-2">
                 {/* Muestra el nombre del Pokémon */}
