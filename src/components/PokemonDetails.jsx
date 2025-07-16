@@ -1,6 +1,4 @@
-import { useState } from "react";
 import "./PokemonDetails.css";
-import DetailsWrapper from "../hoc/DetailsWrapper";
 import { Link } from "react-router-dom";
 
 function PokemonDetails(props) {
