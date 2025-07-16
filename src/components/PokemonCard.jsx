@@ -1,9 +1,10 @@
 import "./PokemonCard.css"
+import React from "react";
 
 function PokemonCard(props) {
 
     // Se extraen el objeto 'pokemon' y la función 'selectPokemon' de las props
-    const { pokemon, selectPokemon, selectPokemon2 } = props;
+    const { pokemon, selectPokemon, selectPokemon2 } = props;    
 
     return pokemon.id ? (
         // Si el Pokémon tiene un ID (es decir, los datos ya fueron cargados), se muestra la tarjeta
@@ -29,4 +30,4 @@ function PokemonCard(props) {
 }
 
 
-export default PokemonCard
+export default React.memo(PokemonCard);
